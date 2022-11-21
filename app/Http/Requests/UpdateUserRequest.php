@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
-class StoreVehicleRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +26,7 @@ class StoreVehicleRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:1'],
-            'user_id' => ['integer', 'exists:users,id'],
+            'email' => ['required', 'email:dns', 'unique:users'],
         ];
     }
 }

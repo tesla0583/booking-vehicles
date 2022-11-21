@@ -24,7 +24,8 @@ class UpdateVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'string', 'min:1'],
+            'user_id' => ['integer', 'exists:users,id'],
         ];
     }
 }

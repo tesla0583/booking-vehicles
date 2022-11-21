@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignIdFor(User::class)
                 ->nullable()
+                ->unique()
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->nullOnDelete();

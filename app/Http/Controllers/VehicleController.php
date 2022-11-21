@@ -15,17 +15,11 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $vehicles = Vehicle::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json([
+            'vehicles' => $vehicles
+        ],200);
     }
 
     /**
@@ -36,7 +30,12 @@ class VehicleController extends Controller
      */
     public function store(StoreVehicleRequest $request)
     {
-        //
+        Vehicle::query()->create([
+            'name' =>$request->get('name')
+        ]);
+
+        return response()
+            ->json('Vehicle added successfully!', 200);
     }
 
     /**
@@ -47,18 +46,9 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vehicle $vehicle)
-    {
-        //
+        return response()->json([
+            'vehicle' => $vehicle
+        ],200);
     }
 
     /**
@@ -70,7 +60,11 @@ class VehicleController extends Controller
      */
     public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
     {
-        //
+        $vehicle->update([
+           'name' => $request->get('name')
+        ]);
+
+        return response()->json('Vehicle updated successfully!', 200);
     }
 
     /**
@@ -81,6 +75,9 @@ class VehicleController extends Controller
      */
     public function destroy(Vehicle $vehicle)
     {
-        //
+        $vehicle->delete();
+
+        return response()
+            ->json('Vehicle deleted successfully!', 200);
     }
 }
