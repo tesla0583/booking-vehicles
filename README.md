@@ -7,6 +7,6 @@
         - php artisan migrate --seed
       
     # Config
-    
-        - make .env and .env.testing from .env.example
+            
+        - add to .env L5_SWAGGER_CONST_HOST
     

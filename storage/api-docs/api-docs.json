@@ -1,0 +1,90 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Booking vehicles",
+        "description": "This project was created for booking vehicles",
+        "contact": {
+            "email": "firdavskhodjaev@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http:/book.local/api",
+            "description": "Booking API Server"
+        }
+    ],
+    "paths": {
+        "/booking": {
+            "post": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "Booking",
+                "description": "Booking Vehicles",
+                "operationId": "bookingVehicles",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookingVehiclesRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BookingVehiclesRequest": {
+                "title": "Booking Vehicles Request",
+                "description": "Booking data",
+                "required": [
+                    "vehicle_id",
+                    "user_id"
+                ],
+                "properties": {
+                    "vehicle_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Projects",
+            "description": "API Endpoints of Projects"
+        }
+    ]
+}
